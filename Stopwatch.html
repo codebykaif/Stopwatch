@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: grey;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1{
+            color: black;
+        }
+        .container{
+            text-align: center;
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            border-radius: 8px;
+            background-color: rgb(190, 151, 227);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+        }
+        #start{
+            width: 50px;
+            height: 30px;
+            background-color: rgb(241, 19, 137);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+        }
+
+        #display{
+            width: 80px;
+            height: 30px;
+            background-color: white;
+            border: none;
+            border-radius: 6px;
+            color: rgb(241, 19, 137);
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #display:active{
+            background-color: black;
+        }
+        #stop{
+            width: 50px;
+            height: 30px;
+            background-color: rgb(241, 19, 137);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+        }
+        #stop:active{
+            background-color:#5fe150 ;
+            color: black;
+        }
+        #start:active{
+            background-color:#5fe150 ;
+            color: black;
+        }
+        #reset:active{
+            background-color:#5fe150 ;
+            color: black;
+        }
+        #reset{
+            width: 50px;
+            height: 30px;
+            background-color: #f11389;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body><div class="container">
+    <h1>Stopwatch</h1><br>
+    <p id="display">0</p>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="reset"> Reset</button>
+    </div>
+    <script>
+        let second = 0;
+        let time = null;
+
+        document.getElementById("start").onclick = function() {
+            if(!time){
+                time = setInterval(function(){
+                    second++;
+                    document.getElementById("display").textContent = second;
+                },1000)
+            }
+        };
+        document.getElementById("stop").onclick = function() {
+            clearInterval(time);
+            time = null;
+        };
+        document.getElementById("reset").onclick = function() {
+            clearInterval(time);
+            time = null;
+            second = 0;
+            document.getElementById("display").textContent = second;
+        };
+    </script>
+</body>
+</html>
